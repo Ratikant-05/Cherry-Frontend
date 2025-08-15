@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import Lottie from 'lottie-react';
+import girlWithListAnimation from '../../public/assets/girl-with-list.json';
 import './AuthForm.css';
 
 const AuthForm = () => {
@@ -44,29 +46,20 @@ const AuthForm = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-background">
-        <div className="auth-pattern"></div>
-        <div className="floating-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-          <div className="shape shape-4"></div>
-        </div>
-      </div>
-      
-      <div className="auth-content">
-        <div className="auth-card">
-          <div className="auth-header">
-            <div className="auth-logo">
-              <span className="logo-icon">🍒</span>
-              <h1 className="auth-title">Cherry</h1>
+      <div className="auth-layout">
+        <div className="auth-content">
+          <div className={`auth-card`}>
+            <div className="auth-header">
+              <div className="auth-logo">
+                <span className="logo-icon">🍒</span>
+                <h1 className="auth-title">Cherry</h1>
+              </div>
+              <p className="auth-subtitle">
+                {isLogin ? 'Welcome back to your productivity hub!' : 'Join thousands who stay organized with Cherry'}
+              </p>
             </div>
-            <p className="auth-subtitle">
-              {isLogin ? 'Welcome back to your productivity hub!' : 'Join thousands who stay organized with Cherry'}
-            </p>
-          </div>
 
-          <form onSubmit={handleSubmit} className="auth-form">
+            <form onSubmit={handleSubmit} className="auth-form">
             {!isLogin && (
               <div className="form-group">
                 <label htmlFor="name">
@@ -157,9 +150,9 @@ const AuthForm = () => {
                 </>
               )}
             </button>
-          </form>
+            </form>
 
-          <div className="auth-footer">
+            <div className="auth-footer">
             <div className="auth-divider">
               <span>or</span>
             </div>
@@ -173,50 +166,24 @@ const AuthForm = () => {
                 {isLogin ? 'Create an account' : 'Sign in instead'}
               </button>
             </p>
+            </div>
           </div>
         </div>
-
-        <div className="auth-features">
-          <div className="features-header">
-            <h3>Why choose Cherry? 🍒</h3>
-            <p>Join thousands of productive people who trust Cherry to organize their lives</p>
-          </div>
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">📝</div>
-              <h4>Smart Task Management</h4>
-              <p>Create, organize, and prioritize tasks with intelligent suggestions</p>
+        
+        <div className="auth-illustration">
+          <div className="illustration-content">
+            <div className="lottie-container">
+              <Lottie 
+                animationData={girlWithListAnimation}
+                className="auth-lottie"
+                loop={true}
+                autoplay={true}
+              />
             </div>
-            <div className="feature-card">
-              <div className="feature-icon">📊</div>
-              <h4>Productivity Analytics</h4>
-              <p>Track your progress with beautiful charts and insights</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">🎯</div>
-              <h4>Goal Achievement</h4>
-              <p>Set deadlines, track time, and celebrate your wins</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">🌙</div>
-              <h4>Dark Mode Support</h4>
-              <p>Work comfortably in any lighting condition</p>
-            </div>
-          </div>
-          <div className="social-proof">
-            <div className="stats">
-              <div className="stat">
-                <span className="stat-number">10K+</span>
-                <span className="stat-label">Happy Users</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">1M+</span>
-                <span className="stat-label">Tasks Completed</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">99%</span>
-                <span className="stat-label">Satisfaction Rate</span>
-              </div>
+            
+            <div className="illustration-text">
+              <h3>Stay Organized with Cherry</h3>
+              <p>Join thousands of users who manage their tasks efficiently with our intuitive platform.</p>
             </div>
           </div>
         </div>
