@@ -38,7 +38,7 @@ const Dashboard = () => {
       });
       
       console.log('Making API call to:', `/tasks?${params}`);
-      const response = await axios.get(`/tasks?${params}`);
+      const response = await axios.get(`tasks?${params}`);
       console.log('Tasks received:', response.data);
       setTasks(response.data);
     } catch (error) {
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
   const createTask = async (taskData) => {
     try {
-      const response = await axios.post('/tasks', taskData);
+      const response = await axios.post('tasks', taskData);
       setTasks([response.data, ...tasks]);
       setShowTaskForm(false);
       toast.success('Task created successfully!');
