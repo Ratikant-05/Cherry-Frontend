@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TaskItem from './TaskItem';
 import './TaskList.css';
 
@@ -13,7 +13,19 @@ const TaskList = ({
   onFiltersChange
 }) => {
   const [showFilters, setShowFilters] = useState(false);
-  const [viewMode, setViewMode] = useState('tiles'); // tiles, details, list, compact
+  
+  // Initialize viewMode from localStorage or default to 'tiles'
+  const [viewMode, setViewMode] = useState(() => {
+    const savedViewMode = localStorage.getItem('cherry-task-view-mode');
+    return savedViewMode && ['tiles', 'details', 'list', 'compact'].includes(savedViewMode) 
+      ? savedViewMode 
+      : 'tiles';
+  });
+
+  // Save viewMode to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('cherry-task-view-mode', viewMode);
+  }, [viewMode]);
 
   const getViewTitle = () => {
     switch (activeView) {
