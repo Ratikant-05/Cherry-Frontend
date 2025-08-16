@@ -303,6 +303,7 @@
   font-weight: 600;
   text-transform: capitalize;
   font-size: 0.75rem;
+  margin-right: 1rem;
 }
 
 .status-badge.pending {
