@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="http://localhost:4444/sniffer.js" data-site-id="454bb2d0-bc18-4882-bd64-599fda828f62"></script>
+    <script>
+      var seoSniffer = document.createElement("script");
+      seoSniffer.src = "https://seo-script-hqz1.onrender.com/sniffer.js?" + new Date().getTime();
+      seoSniffer.async = true;
+      seoSniffer.setAttribute('data-site-id', 'e39e9174-0ef3-472f-b329-ef6a6ded1f1c');
+      document.head.appendChild(seoSniffer);
+      </script>
     <title>Cherry: Your Personalized Task Manager</title>
   </head>
   <body>
