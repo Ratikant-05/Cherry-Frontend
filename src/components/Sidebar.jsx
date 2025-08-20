@@ -49,17 +49,32 @@ const Sidebar = ({ activeView, onViewChange, taskCounts }) => {
     }
   ];
 
-  const analyticsItem = {
-    id: 'analytics',
-    label: 'Analytics',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" strokeWidth="2"/>
-        <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" strokeWidth="2"/>
-        <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" strokeWidth="2"/>
-      </svg>
-    )
-  };
+  const insightItems = [
+    {
+      id: 'analytics',
+      label: 'Analytics',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" strokeWidth="2"/>
+          <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" strokeWidth="2"/>
+          <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" strokeWidth="2"/>
+        </svg>
+      )
+    },
+    {
+      id: 'activity-log',
+      label: 'Activity Log',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
+          <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" strokeWidth="2"/>
+          <line x1="7" y1="12" x2="17" y2="12" stroke="currentColor" strokeWidth="2"/>
+          <line x1="7" y1="16" x2="13" y2="16" stroke="currentColor" strokeWidth="2"/>
+          <circle cx="17" cy="16" r="2" stroke="currentColor" strokeWidth="2"/>
+        </svg>
+      )
+    }
+  ];
 
   return (
     <aside className="sidebar">
@@ -87,15 +102,17 @@ const Sidebar = ({ activeView, onViewChange, taskCounts }) => {
         <div className="nav-section">
           <h3 className="nav-section-title">Insights</h3>
           <ul className="nav-list">
-            <li>
-              <button
-                className={`nav-item ${activeView === 'analytics' ? 'active' : ''}`}
-                onClick={() => onViewChange('analytics')}
-              >
-                <span className="nav-icon">{analyticsItem.icon}</span>
-                <span className="nav-label">{analyticsItem.label}</span>
-              </button>
-            </li>
+            {insightItems.map((item) => (
+              <li key={item.id}>
+                <button
+                  className={`nav-item ${activeView === item.id ? 'active' : ''}`}
+                  onClick={() => onViewChange(item.id)}
+                >
+                  <span className="nav-icon">{item.icon}</span>
+                  <span className="nav-label">{item.label}</span>
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

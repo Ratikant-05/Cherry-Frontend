@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import TaskList from './TaskList';
 import TaskForm from './TaskForm';
 import Analytics from './Analytics';
+import ActivityLog from './ActivityLog';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import axios from 'axios';
@@ -186,6 +187,8 @@ const Dashboard = () => {
         <main className="main-content">
           {activeView === 'analytics' ? (
             <Analytics tasks={tasks} />
+          ) : activeView === 'activity-log' ? (
+            <ActivityLog />
           ) : (
             <TaskList
               tasks={getFilteredTasks()}
